@@ -9,15 +9,10 @@ export default (setMessage) => {
     let socket;
     socket = io(connectionURL);
     socket.on("Chat", (data) => {
-      //console.log(data);
       setMessage(data);
     });
     setSocket(socket);
   };
-  if (socket) {
-    const { connected } = socket;
-    // console.log(connected);
-  }
 
   useEffect(() => {
     console.log("in use effect");

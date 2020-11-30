@@ -13,11 +13,9 @@ export default ChatScreen = () => {
   };
   const handleSend = useCallback(
     (data) => {
+      console.log("this is ", data);
       console.log("inside call back");
       sendToSocket(data);
-      setMessage((previousMess) => {
-        return GiftedChat.append(previousMess, message);
-      });
     },
     [socket]
   );
@@ -32,8 +30,9 @@ export default ChatScreen = () => {
       <GiftedChat
         messages={message}
         user={{ _id: 1 }}
-        onSend={handleSend}
+        onSend={(data) => handleSend(data)}
         isTyping
+        sent
         alwaysShowSend
         messagesContainerStyle={{
           marginBottom: 20,
